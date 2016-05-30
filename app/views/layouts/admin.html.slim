@@ -7,9 +7,19 @@ html
     title
       | Support Ticket
     meta[content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"]
+<<<<<<< HEAD
    
     = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' 
    
+=======
+    meta[name="description" content=""]
+    meta[name="author" content=""]
+    meta[content='= user_signed_in? ? current_user.id : "" ' name='user-id']
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true 
+    = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' 
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true 
+>>>>>>> 6a4bd940b911008ca132ca1101817ec93d128298
     =stylesheet_link_tag 'AdminLTE'
     =stylesheet_link_tag '_all-skins.css'
     =stylesheet_link_tag 'bootstrap.css'

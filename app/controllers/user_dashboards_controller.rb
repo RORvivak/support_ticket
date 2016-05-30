@@ -1,7 +1,6 @@
 class UserDashboardsController < ApplicationController
-   # layout :admin_layout
    
-   def view 
+   def view
    end
 
 end
