@@ -1,0 +1,49 @@
+
+h2
+  | Sign up
+= form_for(admin_user_registrations_new_path) do |f|
+  - unless @user.errors.full_messages.nil?
+    - @user.errors.full_messages.each do |error|
+        br
+        =error
+  table[border = '1']
+    tr
+      td
+        = f.label :First_name
+      td  
+        = f.text_field :first_name, autofocus: true
+    tr  
+      td
+        = f.label :last_name
+      td  
+        = f.text_field :last_name, autofocus: true
+    tr
+      td  
+        = f.label :email
+      td
+        = f.email_field :email, autofocus: true
+    tr
+      td
+        = f.label :password
+      - if @minimum_password_length
+        em
+          | (
+          = @minimum_password_length
+          |  characters minimum)
+      td
+        = f.password_field :password, autocomplete: "off"
+    tr
+      td
+        = f.label :password_confirmation
+      td
+        = f.password_field :password_confirmation, autocomplete: "off"
+    tr    
+      td
+        = f.label :Department
+      td[align = 'center']
+          
+        = f.collection_select(:department_id, all_department, :id, :name) 
+    tr
+      td[align = 'center' colspan = 2]
+          = f.submit "Sign up"
+ 

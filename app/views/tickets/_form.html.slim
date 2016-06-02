@@ -1,0 +1,29 @@
+=flash[:notice]
+-if @ticket.errors.full_messages.any?
+  -@ticket.errors.full_messages.each do |c|
+    br
+    =c  
+br    
+=form_for([@ticket]) do |f|
+  table
+    tr.field
+      td[align = 'left']
+        =f.label :Title
+      td[align = 'center']   
+        =f.text_field :title
+       
+    tr.field
+    td[align = 'left']
+      =f.label :Body
+    td
+      =f.text_area :body
+
+    tr.field
+    td[align = 'center']
+      =f.label :Department
+    td[align = 'center']
+      =f.collection_select :department_id,all_department,:id,:name  
+    
+    tr.actions
+      td[colspan = 2 align = 'center'] 
+        =f.submit

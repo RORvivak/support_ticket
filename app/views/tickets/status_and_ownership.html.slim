@@ -1,0 +1,19 @@
+=form_for(@ticket,:url=>change_status_and_ownership_ticket_path,:method=>:post) do |f|
+	table[border = 1]
+		tr.fields
+			td[align = 'center']
+				=f.label :Status
+			td[align = 'center']	
+				= f.select(:status, Ticket.statuses.keys.map {|role| [role.titleize,role]}) 
+		tr.fields
+			td[align = 'center']
+				=f.label :Owner
+			td[align = 'center']	
+				 =f.collection_select :staff_id,all_owner(@ticket),:id,:first_name
+		tr.actions		   
+			td[align = 'center' colspan = 2]
+				=f.submit :submit
+br				
+p
+	|The ticket reference no is 
+	=@ticket.token									

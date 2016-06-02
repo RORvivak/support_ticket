@@ -1,0 +1,13 @@
+=javascript_include_tag "blank"	
+=render :partial=>'chat'
+=flash[:notice]
+=form_for(@ticket_reply,:url=>staff_reply_create_ticket_path(),method: :post) do |f|
+	table
+		tr
+			td
+				=f.label :Reply
+			td
+				=f.text_area :staff_reply
+				=hidden_field_tag "ticket_reply[staff_id]",current_user.id
+	.button
+		=f.submit :submit	

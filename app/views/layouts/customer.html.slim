@@ -1,6 +1,6 @@
 doctype html
 html
-  header
+  head
     meta[http-equiv="content-type" content="text/html; charset=UTF-8"]
     meta[charset="utf-8"]
     meta[http-equiv="X-UA-Compatible" content="IE=edge"]
@@ -20,7 +20,7 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true 
     = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' 
     = javascript_include_tag 'application', 'data-turbolinks-track' => true 
-    = csrf_meta_tags   
+    = csrf_meta_tags      
     style[type="text/css"]
       | .jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}
   body.skin-blue.sidebar-mini
@@ -45,23 +45,19 @@ html
         section.sidebar[style="height: auto;"]
           .user-panel
             .pull-left.image
+              
           ul.sidebar-menu
             li.header
               | MAIN NAVIGATION
-              -if current_user.role == 'Staff'   
-                li
-                  =form_tag tickets_path,:method=>:get
-                    =text_field_tag 'token',nil,:placeholder => 'Enter Reference no'
-                    br
-                    br
-                    =submit_tag 'Submit'
+              
               li
 
-                =link_to('Home',user_dashboard_view_path,:method=>:get)
+                =link_to('Home',user_dashboard_view_path,:method=>:get) 
               -if current_user.role == 'Admin' 
                 li
-                  =link_to('Registration',admin_user_registrations_new_path,:method=>:get)
+                  =link_to('Registeration',admin_user_registrations_new_path,:method=>:get)
               li
+                li
                 li[class="active treeview"]
                   a[href="/tickets"]
                     i[class="fa fa-dashboard"] 
@@ -102,8 +98,7 @@ html
                       li[class="active"]
                         a [href="/tickets?status=4"]
                           i[class="fa fa-circle-o"] 
-                            |completed
-
+                            |completed  
         .registeration[style="min-height: 1916px float: right;" align="center"]
              
       .content-wrapper[style="min-height: 916px;"]
@@ -112,11 +107,9 @@ html
             |  Dashboard 
             small
              
-              
+            
         .registeration[style="min-height: 1916px float: right;" align="center"]
-          =yield
-          div
-              =yield :head 
+          =yield 
 
       aside.control-sidebar.control-sidebar-dark
         ul.nav.nav-tabs.nav-justified.control-sidebar-tabs

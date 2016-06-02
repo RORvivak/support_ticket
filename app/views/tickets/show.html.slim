@@ -1,0 +1,42 @@
+p
+	|The Ticket informations are :-
+p   
+	|Reference_no:
+	=@ticket.token
+p
+	|Title:
+	=@ticket.title
+p
+	|Body:
+	=@ticket.body	
+-unless @show.blank?
+	p
+		|Ticket details
+
+		br
+	section[class = 'content']
+        table[ border = '0' class = 'box col-xs-12 table table-bordered table-hover dataTable']
+    	    tr
+    		    th[align = 'center']
+    			    |owner
+    		    th[align = 'center']
+    			    |status
+    		    td[colspan = '2' align = 'center']
+    			    b
+                        |changed date
+    		    th[align = 'center']	
+    			    |Assigned by
+		    -@show.each do |u|
+    		    tr
+    			    -u.each do |t|
+    				    -if t.class == ActiveSupport::TimeWithZone
+    						td
+    							=t.strftime('%a, %d %b %Y')
+                            td
+                                =t.strftime('%H:%M:%S')
+    					-else
+                            td
+    						    =t	  
+
+
+=render :partial=> '/ticket_replies/chat'

@@ -1,33 +1,24 @@
 doctype html
 html
-  header
+  head
     meta[http-equiv="content-type" content="text/html; charset=UTF-8"]
     meta[charset="utf-8"]
     meta[http-equiv="X-UA-Compatible" content="IE=edge"]
     title
       | Support Ticket
     meta[content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"]
-    meta[name="description" content=""]
-    meta[name="author" content=""]
-    meta[content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id']
     =stylesheet_link_tag 'AdminLTE'
     =stylesheet_link_tag '_all-skins.css'
     =stylesheet_link_tag 'bootstrap.css'
     =stylesheet_link_tag 'font-awesome.css'
     =stylesheet_link_tag 'ionicons.css'
     =stylesheet_link_tag 'jquery-jvectormap-1.css'
-    =javascript_include_tag "min"
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true 
-    = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' 
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true 
-    = csrf_meta_tags   
+    =javascript_include_tag "min"   
     style[type="text/css"]
       | .jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}
   body.skin-blue.sidebar-mini
     .wrapper
       header.main-header
-        div align = "right"
-          =link_to('Sign_out',destroy_user_session_path,:method=>:get)
         a.logo[href="file:///home/vivak/Desktop/AdminLTE-2.3%20%28copy%29.0/index2.html"]
           span.logo-mini
             b
@@ -35,88 +26,26 @@ html
             | LT
           span.logo-lg
             b
-              | Admin
-            | LTE
+              | Log in
+            
         nav.navbar.navbar-static-top[role="navigation"]
-          a.sidebar-toggle[href="#" data-toggle="offcanvas" role="button"]
+          
             span.sr-only
               | Toggle navigation
       aside.main-sidebar
         section.sidebar[style="height: auto;"]
-          .user-panel
-            .pull-left.image
-          ul.sidebar-menu
-            li.header
-              | MAIN NAVIGATION
-              -if current_user.role == 'Staff'   
-                li
-                  =form_tag tickets_path,:method=>:get
-                    =text_field_tag 'token',nil,:placeholder => 'Enter Reference no'
-                    br
-                    br
-                    =submit_tag 'Submit'
-              li
-
-                =link_to('Home',user_dashboard_view_path,:method=>:get)
-              -if current_user.role == 'Admin' 
-                li
-                  =link_to('Registration',admin_user_registrations_new_path,:method=>:get)
-              li
-                li[class="active treeview"]
-                  a[href="/tickets"]
-                    i[class="fa fa-dashboard"] 
-                    span
-                    |Tickets 
-                    i[class="fa fa-angle-left pull-right"]
-                    ul[class="treeview-menu"]
-                      li[class="active"]
-                        a [href="/tickets"]
-                          i[class="fa fa-circle-o"] 
-                            |All tickets
-                    i[class="fa fa-angle-left pull-right"]
-                    ul[class="treeview-menu"]
-                      li[class="active"]
-                        a [href="/tickets?status=0"]
-                          i[class="fa fa-circle-o"] 
-                            |Waiting for Staff Response
-                    i[class="fa fa-angle-left pull-right"]
-                    ul[class="treeview-menu"]
-                      li[class="active"]
-                        a [href="/tickets?status=1"]
-                          i[class="fa fa-circle-o"] 
-                            |Waiting_for_Customer
-                    i[class="fa fa-angle-left pull-right"]
-                    ul[class="treeview-menu"]
-                      li[class="active"]
-                        a [href="/tickets?status=2"]
-                          i[class="fa fa-circle-o"] 
-                            |on hold
-                    i[class="fa fa-angle-left pull-right"]
-                    ul[class="treeview-menu"]
-                      li[class="active"]
-                        a [href="/tickets?status=3"]
-                          i[class="fa fa-circle-o"] 
-                            |cancelled
-                    i[class="fa fa-angle-left pull-right"]
-                    ul[class="treeview-menu"]
-                      li[class="active"]
-                        a [href="/tickets?status=4"]
-                          i[class="fa fa-circle-o"] 
-                            |completed
-
+          
         .registeration[style="min-height: 1916px float: right;" align="center"]
              
       .content-wrapper[style="min-height: 916px;"]
         section.content-header
           h1
-            |  Dashboard 
+            | 
             small
              
-              
+            
         .registeration[style="min-height: 1916px float: right;" align="center"]
-          =yield
-          div
-              =yield :head 
+          =yield 
 
       aside.control-sidebar.control-sidebar-dark
         ul.nav.nav-tabs.nav-justified.control-sidebar-tabs

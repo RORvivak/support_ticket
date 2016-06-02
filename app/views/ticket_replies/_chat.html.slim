@@ -1,0 +1,33 @@
+-all_reply(@ticket)
+-unless @user.blank?
+    p
+        b
+            |Chat History
+    table[border = 0 align = 'center']
+	    -@ticket_reply_all.zip(@user).each do |t,u|
+	 	    -if@position == 0 
+	 			-unless t.customer_reply.nil?
+	 				tr
+                
+		 		    	td[style='font-size: 14px; max-width: 330px; width:330px;'align='right' colspan =3] =@customer + ticket_customer_reply_time(t) 
+	 					td[style='font-size: 14px; max-width: 330px; width:330px;  padding	: 20px;' colspan =3] 	 			
+         		       		=t.customer_reply
+           		-unless t.staff_reply.nil?    		
+            		tr 
+                		td[style='font-size: 14px; max-width: 330px; width:330px;'align='right' colspan =3]  = u + ticket_staff_reply_time(t)
+                		td[style='font-size: 14px; max-width: 330px; width:330px; padding	: 20px;' colspan =3] 
+                    		=t.staff_reply
+            -else
+                -unless t.staff_reply.nil?    		
+            		tr 
+                		td[style='font-size: 14px; max-width: 330px; width:330px;'align='right' colspan =3]  = u + ticket_staff_reply_time(t)
+                		td[style='font-size: 14px; max-width: 330px; width:330px; padding	: 20px;' colspan =3] 
+                    		=t.staff_reply
+                -unless t.customer_reply.nil?
+	 				tr
+                
+		 		    	td[style='font-size: 14px; max-width: 330px; width:330px;'align='right' colspan =3] =@customer + ticket_customer_reply_time(t) 
+	 					td[style='font-size: 14px; max-width: 330px; width:330px;  padding	: 20px;' colspan =3] 	 			
+         		       		=t.customer_reply
+                          
+           		    		    		 

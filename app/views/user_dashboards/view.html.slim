@@ -1,0 +1,21 @@
+
+=flash[:notice]
+=javascript_include_tag 'chat'
+=javascript_include_tag 'user'
+= javascript_include_tag "private_pub" 
+-chat_user(current_user)
+table
+    tr
+        th
+        	|Email
+-@users.each do |user|
+	tr
+		td
+			=user.email
+		td
+			= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
+                    "data-sid" => current_user.id, "data-rip" => user.id
+
+
+.container
+	=yield

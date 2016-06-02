@@ -1,0 +1,55 @@
+=stylesheet_link_tag "pagination"
+=flash[:notice]
+br
+
+-unless @tickets.blank?  
+	section[class = 'content']
+		table[border = '0' class = 'box col-xs-12 table table-bordered table-hover dataTable']
+	    	tr 
+				th[align = 'center'] Title
+				th[align = 'center'] Body	
+				th[align = 'center'] Department	
+				-if current_user.role != 'Admin'
+            		td[colspan = 4 align = 'center']
+                        b
+            				|Action
+    		-@tickets.each do |ticket|
+				tr[role = 'row']
+					td
+						=ticket.title
+         			td
+						=ticket.body
+					td
+				    	=department(ticket)	
+					  
+					-if policy(ticket).update?	
+					    td		
+					    	=link_to(image_tag('edit',:alt=>'Edit',:title=>'Edit'),edit_ticket_path(ticket))
+				    -if policy(ticket).status_and_ownership?	
+						td
+							=link_to(image_tag('edit',:alt=>'status and ownership',:title=>'status and ownership'),status_and_ownership_ticket_path(ticket))
+						
+					-if policy(ticket).update?	
+						td
+							=link_to(image_tag('delete',:alt=>'Delete',:title=>'Delete'),ticket,method: :delete)
+								    
+                    -if policy(ticket).customer_chat?
+                    	td
+                    		=link_to(image_tag('reply',:alt=>'Reply',:title=>'Reply'),customer_reply_new_ticket_path(ticket),method: :get)
+                    	
+                    -if policy(ticket).staff_chat?
+                    	td
+                    		=link_to(image_tag('reply',:alt=>'Reply',:title=>'Reply'),staff_reply_new_ticket_path(ticket),method: :get)		
+                    		
+                    -if policy(ticket).show?
+                        td	
+                    		=link_to(image_tag('show',:alt=>'show',:title=>'show'),ticket_path(ticket),method: :get)
+    .digg_pagination
+		=will_paginate @tickets
+	div[]
+		-if policy(Ticket).new?
+			=link_to('Create Ticket',new_ticket_path,:method=>:get)	                  		
+-else
+	p
+		| No data to show                    			
+   					
