@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ticket_reply_id: 1
+  staff_reply_time: 2016-05-24 14:55:09
+  customer_reply_time: 2016-05-24 14:55:09
+
+two:
+  ticket_reply_id: 1
+  staff_reply_time: 2016-05-24 14:55:09
+  customer_reply_time: 2016-05-24 14:55:09
