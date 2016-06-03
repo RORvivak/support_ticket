@@ -1,4 +1,4 @@
-chatbox {
+.chatbox {
     position: fixed;
     position: expression("absolute");
     width: 280px;

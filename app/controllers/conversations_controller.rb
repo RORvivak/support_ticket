@@ -1,5 +1,6 @@
 class ConversationsController < ApplicationController
- # skip_before_filter :verify_authenticity_token  
+  skip_before_filter :verify_authenticity_token  
+  layout :false
   
 
   def create
@@ -8,7 +9,7 @@ class ConversationsController < ApplicationController
     else
       @conversation = Conversation.create!(conversation_params)
     end
-
+     @path = '/conversations/' + (@conversation.id).to_s 
      render json: { conversation_id: @conversation.id }
   end
 
